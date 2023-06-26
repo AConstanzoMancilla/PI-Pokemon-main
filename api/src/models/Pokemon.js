@@ -42,16 +42,11 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    created: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     }
   });
 };
 
-// ID. *
-// Nombre. *
-// Imagen. *
-// Vida. *
-// Ataque. *
-// Defensa. *
-// Velocidad.
-// Altura.
-// Peso.
