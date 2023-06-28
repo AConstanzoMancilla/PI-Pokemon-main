@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    life: {
+    hp: {
       type: DataTypes.INTEGER,
       allowNull: false
     },

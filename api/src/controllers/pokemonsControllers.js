@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const { Pokemon } = require("../db");
+const { Pokemon, Type } = require("../db");
 
 const pokemonFormater = (element)=>{
     return {
@@ -20,32 +20,46 @@ const pokemonFormater = (element)=>{
 // 📍 GET | /pokemons
 // Obtiene un arreglo de objetos, donde cada objeto es un pokemon con su información.
 const getAllPokemons = async () => {
-    const pokemonsDb = await Pokemon.findAll();
-    const infoApi = (await axios.get("https://pokeapi.co/api/v2/pokemon")).data;
-    const pokemonsApi = infoApi.results;
-    return [...pokemonsDb, ...pokemonsApi]; //aquí se junta toda la info tanto de la api como de la db
+    const pokemonsDb = await Pokemon.findAll({
+        include:{
+            model:Type,
+            as: "pokemonTypes",
+            attributes:["name"],
+            through:{
+                attributes:[]
+            }
+        }
+    });//está trayendo todos los pokemons que estén en la database de manera asíncrona porque el método findAll es asíncrono por eso va un await. 
+    const infoApi = (await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=20%27")).data; //trae toda la info de pokemons desde la api y es asíncrona porque es una petición a la api. 
+    const pokemonsApi = infoApi.results; //acá estamos trayendonos efectivamente la info que queremos de los pokemons desde la api, por eso ponemos results. 
+    const infoPokemons = await Promise.all(
+        pokemonsApi.map(async (pokemon) => {
+            const url = await axios.get(pokemon.url);
+            return pokemonFormater(url.data)  
+        })
+    )
+    return [...pokemonsDb, ...infoPokemons]; //aquí se juntan en un solo array todos los pokemons tanto de la api como de la db, por eso utilizamos un spread operator.
 };
-    
+
 // 📍 GET | /pokemons/:idPokemon
 // Esta ruta obtiene el detalle de un pokemon específico. Es decir que devuelve un objeto con la información pedida en el detalle de un pokemon.
 // El pokemon es recibido por parámetro (ID).
 // Tiene que incluir los datos del tipo de pokemon al que está asociado.
 // Debe funcionar tanto para los pokemones de la API como para los de la base de datos.
-const getPokemonById = async (id, source) => { //extrayendo la info con el .data
+const getPokemonById = async (id, source) => { //será una función asíncrona que está recibiendo id y source por parámetro
     const pokemon = 
-    source === "api" 
-    ? (await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)).data
-    : await Pokemon.findByPk(id);
+    source === "api" // si la fuente es igual a api, tendrá dos opciones //utilizamos la dependencia axios para hacer llamadas asincrónicas  
+    ? (await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)).data //acá llamamos a la url externa por el api. //utilizamos temple strings porque el id es DINÁMICO
+    : await Pokemon.findByPk(id); //si la fuente no es la api y es la base de datos, utilizamos el método findByPk, ayuda a acelerar la búsqueda del id. OJO, que también es un método asincrónico, por eso va el await
     return pokemonFormater(pokemon);
 }
-
 
 // 📍 GET | /pokemons/name?="..."
 // Esta ruta debe obtener todos aquellos pokemons que coinciden con el nombre recibido por query.
 // Debe poder buscarlo independientemente de mayúsculas o minúsculas.
 // Si no existe el pokemon, debe mostrar un mensaje adecuado.
 // Debe buscar tanto los de la API como los de la base de datos.
-const getPokemonByName = async (name,source) => {
+const getPokemonByName = async (name, source) => {
     console.log('name',name);
     const pokemon = 
     source === "api" 
@@ -58,8 +72,24 @@ const getPokemonByName = async (name,source) => {
 // Esta ruta recibirá todos los datos necesarios para crear un pokemon y relacionarlo con sus tipos solicitados.
 // Toda la información debe ser recibida por body.
 // Debe crear un pokemon en la base de datos, y este debe estar relacionado con sus tipos indicados (debe poder relacionarse al menos con dos).
-const createPokemonDb = async (id, name, image, life, attack, defense, speed, height, weight, types ) => {
-    return await Pokemon.create({id, name, image, life, attack, defense, speed, height, weight, types});
+const createPokemonDb = async (id, name, image, hp, attack, defense, speed, height, weight,type1,type2) => {
+    const pokemon = await Pokemon.create({id, name, image, hp, attack, defense, speed, height, weight})
+
+    const typePokemon1 = await Type.findOne({where:{name:type1}})    
+    console.log (type1,typePokemon1)    
+    await pokemon.addPokemonTypes(typePokemon1)
+        
+    if(type2){
+        const typePokemon2 = await Type.findOne({where:{name:type2}})
+        console.log (typePokemon2)  
+        await pokemon.addPokemonTypes(typePokemon2) 
+    }
+    await pokemon.save()
+    console.log (pokemon)
+
+    return pokemon;
+
+    // return await Pokemon.create({id, name, image, hp, attack, defense, speed, height, weight, types});
 }
 
 module.exports = {

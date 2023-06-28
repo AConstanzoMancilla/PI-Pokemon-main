@@ -20,10 +20,10 @@ const getAllPokemonsHandler = async (req, res) => {
 // 📍 GET | /pokemons/:idPokemon
 const getPokemonIdHandler = async (req, res) => {
     const {id} = req.params;
-    const source = isNaN(id) ? "db" : "api" //Verificamos que el number es un número(api) o un string(db)
+    const source = isNaN(id) ? "db" : "api" //Verificamos que la fuente sea un número(buscará en api) o un string(buscará en db)
 
     try {
-        const response = await getPokemonById(id,source);
+        const response = await getPokemonById(id, source);
         console.log(response)
         res.status(200).json(response); 
     } catch (error) {
@@ -46,10 +46,10 @@ const getAllPokemonByNameHandler = async (req, res) => {
 
 // 📍 POST | /pokemons
 const createPokemonHandler = async (req, res) => {
-    const { id, name, image, life, attack, defense, speed, height, weight , types} = req.body;
+    const { id, name, image, hp, attack, defense, speed, height, weight,type1,type2} = req.body; //llega info por body y la recibe el handler, la extrae del body
 
-    try {
-        const response = await createPokemonDb(id, name, image, life, attack, defense, speed, height, weight,types);
+    try { //sirve para manejar errores
+        const response = await createPokemonDb(id, name, image, hp, attack, defense, speed, height, weight,type1,type2);//invocaba a nuestro controller y le pasamos la info
         res.status(200).json(response); 
     } catch (error) {
         res.status(400).json({error: error.message});

@@ -1,10 +1,10 @@
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
+require('dotenv').config(); //sirve para leer el archivo .env con el usuario, password y puerto. 
+const { Sequelize } = require('sequelize'); //utilizamos la dependencia sequelize
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env; //sirve para traernos la info que está en el archivo .env
 
-const sequelize = new Sequelize(
+const sequelize = new Sequelize( //instanciamos a sequelize con new
    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
    {
       logging: false, // set to console.log to see the raw SQL queries
