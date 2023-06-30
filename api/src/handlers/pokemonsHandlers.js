@@ -2,11 +2,13 @@ const { getAllPokemons, getPokemonById, getPokemonByName, createPokemonDb,} = re
 
 // 📍 GET | /pokemons
 const getAllPokemonsHandler = async (req, res) => {
+    
     const {name} = req.query;
-
+    
+    const source = "api"
     try {
         if(name){
-            const pokemonByName = await getPokemonByName(name);
+            const pokemonByName = await getPokemonByName(name, source);
             res.status(200).json(pokemonByName);
         }else{
             const response = await getAllPokemons();
@@ -19,12 +21,13 @@ const getAllPokemonsHandler = async (req, res) => {
 
 // 📍 GET | /pokemons/:idPokemon
 const getPokemonIdHandler = async (req, res) => {
+    
     const {id} = req.params;
     const source = isNaN(id) ? "db" : "api" //Verificamos que la fuente sea un número(buscará en api) o un string(buscará en db)
-
+    
     try {
         const response = await getPokemonById(id, source);
-        console.log(response)
+        
         res.status(200).json(response); 
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -32,17 +35,20 @@ const getPokemonIdHandler = async (req, res) => {
 }
 
 // 📍 GET | /pokemons/name?="..."
-const getAllPokemonByNameHandler = async (req, res) => {
-    const {name} = req.params;
-    const source = "api"
+// const getAllPokemonByNameHandler = async (req, res) => {
+//     console.log('dsgdsfgdfs',1);
+//     console.log(req.query)
+//     const {name} = req.query;
+//     console.log(name)
+//     const source = "api"
 
-    try {
-        const pokemonByName = await getPokemonByName(name, source);
-        res.status(200).json(pokemonByName);
-    } catch (error) {
-        res.status(400).json({error: error.message});
-    }
-}
+//     try {
+//         const pokemonByName = await getPokemonByName(name, source);
+//         res.status(200).json(pokemonByName);
+//     } catch (error) {
+//         res.status(400).json({error: error.message});
+//     }
+// }
 
 // 📍 POST | /pokemons
 const createPokemonHandler = async (req, res) => {
@@ -60,7 +66,7 @@ module.exports = {
     getAllPokemonsHandler,
     getPokemonIdHandler,
     createPokemonHandler,
-    getAllPokemonByNameHandler
+
 }
 
 

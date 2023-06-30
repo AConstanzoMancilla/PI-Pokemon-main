@@ -60,13 +60,18 @@ const getPokemonById = async (id, source) => { //será una función asíncrona q
 // Si no existe el pokemon, debe mostrar un mensaje adecuado.
 // Debe buscar tanto los de la API como los de la base de datos.
 const getPokemonByName = async (name, source) => {
-    console.log('name',name);
+    let array_poke =[]
+    let nameInLowerCase = name.toLowerCase();
     const pokemon = 
     source === "api" 
-    ? (await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)).data
-    :null;
-    return pokemonFormater(pokemon);
+    ? (await axios.get(`https://pokeapi.co/api/v2/pokemon/${nameInLowerCase}`)).data
+    : await Pokemon.findAll({ where: { name: nameInLowerCase } })
+    let p = pokemonFormater(pokemon)
+    array_poke.push(p)
+    console.log(array_poke);
+    return array_poke;
 }
+
 
 // 📍 POST | /pokemons
 // Esta ruta recibirá todos los datos necesarios para crear un pokemon y relacionarlo con sus tipos solicitados.
@@ -76,16 +81,16 @@ const createPokemonDb = async (id, name, image, hp, attack, defense, speed, heig
     const pokemon = await Pokemon.create({id, name, image, hp, attack, defense, speed, height, weight})
 
     const typePokemon1 = await Type.findOne({where:{name:type1}})    
-    console.log (type1,typePokemon1)    
+       
     await pokemon.addPokemonTypes(typePokemon1)
         
     if(type2){
         const typePokemon2 = await Type.findOne({where:{name:type2}})
-        console.log (typePokemon2)  
+          
         await pokemon.addPokemonTypes(typePokemon2) 
     }
     await pokemon.save()
-    console.log (pokemon)
+    
 
     return pokemon;
 

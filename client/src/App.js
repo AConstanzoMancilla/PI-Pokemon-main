@@ -1,9 +1,23 @@
+import {Route, Routes} from 'react-router-dom';
+
+import Home from './views/home/home.component';
+import Detail from './views/detail/detail.component';
+import Create from './views/create/create.component';
+import Landing from './views/landing/landing.component';
+
 import './App.css';
 
+
 function App() {
+  
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
+      <Landing/>
+      <Routes>
+        <Route path='/detail/:id' element={<Detail/>}/>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/create' element={<Create/>}/>
+      </Routes>
     </div>
   );
 }

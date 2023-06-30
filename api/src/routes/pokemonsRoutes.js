@@ -1,6 +1,6 @@
 const { Router } = require("express");
 //IMPORTAR LOS HANDLERS
-const { getAllPokemonsHandler, getPokemonIdHandler, createPokemonHandler , getAllPokemonByNameHandler } = require("../handlers/pokemonsHandlers"); 
+const { getAllPokemonsHandler, getPokemonIdHandler, createPokemonHandler  } = require("../handlers/pokemonsHandlers"); 
 
 const pokemonsRoutes = Router();
 
@@ -13,7 +13,7 @@ pokemonsRoutes.get("/", getAllPokemonsHandler);
 pokemonsRoutes.get("/:id", getPokemonIdHandler);
 
 // GET | /pokemons/name?="..."
-pokemonsRoutes.get("/name/:name", getAllPokemonByNameHandler);
+//pokemonsRoutes.get("/", getAllPokemonByNameHandler);
 
 // POST | /pokemons
 pokemonsRoutes.post("/", createPokemonHandler);
