@@ -70,6 +70,7 @@ const getPokemonByName = async (name, source) => {
     array_poke.push(p)
     console.log(array_poke);
     return array_poke;
+    // return pokemonFormater(pokemon);
 }
 
 

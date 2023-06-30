@@ -21,7 +21,7 @@ function SearchBar() {
   }
   
   const handleOnSubmit = (event) => { //manejador de presionar
-    event.preventDefault();  //si el usuario presiona el Enter 
+    event.preventDefault();  //la info que el usuario ingresó NO se pierde, entonces NO se recarga la página, OJO: si cambias de página pierdes la info que ingreso en el input
     if(searchPokemon.length !== 0){  
     handleSearch()
     }

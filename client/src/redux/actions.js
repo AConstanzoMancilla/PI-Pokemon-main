@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POKEMONS, GET_BY_NAME } from './action-types';
+import { GET_POKEMONS, GET_BY_NAME, GET_BY_ID } from './action-types';
 
 export const getPokemons = () => {
     return async function (dispatch) {
@@ -25,13 +25,27 @@ export const getPokemons = () => {
     }
 }
 
-
 export const getPokemonByName = (name) => {
+        return async function (dispatch) {
+            try {
+                const pokemonByName = await axios.get(`http://localhost:3001/pokemons?name=${name.toLowerCase()}`);
+                const pokemon = pokemonByName.data
+                dispatch({ 
+                    type: GET_BY_NAME, 
+                    payload: pokemon 
+                });
+            } catch (error) {
+                alert(("This pokemon don't exist"))
+            }
+        
+}}
+
+export const getPokemonById = (id) => {
     return async function (dispatch) {
-    const pokemonByName = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
-    const pokemon = pokemonByName.data
+    const pokemonById = await axios.get(`http://localhost:3001/pokemons/${id}`);
+    const pokemon = pokemonById.data
     dispatch({ 
-        type: GET_BY_NAME, 
+        type: GET_BY_ID, 
         payload: pokemon 
     });
     }
