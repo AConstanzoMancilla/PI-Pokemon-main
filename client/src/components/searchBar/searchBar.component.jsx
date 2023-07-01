@@ -2,12 +2,13 @@ import './searchBar.styles.css';
 import { useState } from 'react';
 import { getPokemons, getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import Filters from '../filters/filters.component';
 
 
 function SearchBar() {
-  const [searchPokemon, setSearchPokemon] = useState('');
-  
   const dispatch = useDispatch();
+  
+  const [searchPokemon, setSearchPokemon] = useState('');
 
   const handleChange = (event) => { //manejador de cambios, en este caso el event es lo que va cambiando
     if(event.target.value === ''){ //este es el valor del event que en este caso va cambiando
@@ -26,14 +27,13 @@ function SearchBar() {
     handleSearch()
     }
   }
-
-
   return (
     <div>
       <form onSubmit={handleOnSubmit}>
         <input placeholder="Find a pokemon" value={searchPokemon} onChange={handleChange} />
         <button type="submit">Search</button>
       </form>
+      <Filters/>
     </div>
   );
   }

@@ -6,10 +6,11 @@ import { useParams } from 'react-router-dom';
 
 function Detail() {
   const { id } = useParams();
-  const pokemon = useSelector((state) => state.pokemon)
-
+  
   const dispatch = useDispatch();
   
+  const pokemon = useSelector((state) => state.pokemon)
+
   useEffect(() => { //ciclo de vida del componente, en este caso se renderiza cuando se monta. 
     dispatch(getPokemonById(id));
   }, [id]); //array de dependencias: UseEffect se vuelve a ejecutar cuando cambia el id o el dispatch.  
@@ -17,9 +18,9 @@ function Detail() {
   let types = ""
   if(pokemon.types) { //si existe un types en la propiedad pokemon del global state
     types=pokemon.types //que dentro de types aparezca pokemon.types
-  } else if (pokemon.Types) { //pero si en el model Type, existe 
+  } else if (pokemon.Types) { //pero si en el model Type, existe busca los types del model.  
     types = pokemon.Types.map(types=>types.name)
-    types = types.join(" & ")      
+    types = types.join(" & ") //junta dos types     
   }
 
   return (
