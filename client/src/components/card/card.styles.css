@@ -1,17 +1,21 @@
 .card-container {
     display: flex; /*libertad de los elementos dentro del contenedor y se puedan mover libremente dentro de esa area*/
     flex-direction: column; /*para que los separe y los ponga en línea*/
-    background-color:aqua; /*color al fondo*/
+    width: 380px; 
+    height: 600px; 
+    background-color: beige; /*color al fondo*/
     border: 1px solid grey; /*borde sólido a la tarjeta*/
-    border-radius: 5px; /*borde para que no se vea tan cuadrado*/
+    border-radius: 20px; /*borde para que no se vea tan cuadrado*/
     padding: 25px; /*espacio interior o margen interior*/
     cursor: pointer; /*para que cuando me pare sobre la cartita el cursor sea una mano*/
     -moz-osx-font-smoothing: grayscale;
     backface-visibility: hidden;
     transform: translateZ(0);
     transition: transform 0.25s ease-out;
+    margin:auto;
 }
 
 .card-container:hover {/*acernarnos a la tarjeta al pasar encima*/
     transform: scale(1.05); /*escalamiento y que se agrande*/
 }
+

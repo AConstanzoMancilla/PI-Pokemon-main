@@ -24,7 +24,8 @@ function Detail() {
   }
 
   return (
-    <div key={pokemon.id}>
+    <>
+    <div className="details"key={pokemon.id}>
       <h1>Name:{pokemon.name}</h1>
       <h2>Id:{pokemon.id}</h2>
       <h2>Hp:{pokemon.hp}</h2>
@@ -34,12 +35,13 @@ function Detail() {
       <h2>Height:{pokemon.height}</h2>
       <h2>Weight:{pokemon.weight}</h2>
       <h2>Types:{types}</h2>
-
-      <div>
-        <img src={pokemon.image}/>
-      </div>
-  
     </div>
+    <div className="image-container">
+      <img src={pokemon.image}/>
+    </div>
+  
+    
+    </>
   );
 }
 

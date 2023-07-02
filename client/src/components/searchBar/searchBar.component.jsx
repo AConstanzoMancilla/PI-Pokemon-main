@@ -2,7 +2,7 @@ import './searchBar.styles.css';
 import { useState } from 'react';
 import { getPokemons, getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
-import Filters from '../filters/filters.component';
+
 
 
 function SearchBar() {
@@ -33,7 +33,7 @@ function SearchBar() {
         <input placeholder="Find a pokemon" value={searchPokemon} onChange={handleChange} />
         <button type="submit">Search</button>
       </form>
-      <Filters/>
+      
     </div>
   );
   }

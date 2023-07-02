@@ -31,51 +31,59 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 types: payload
             }
         case FILTER_TYPE:
-            const filter_pokes = payload === "default" ? state.pokemonsCopy :  state.pokemonsCopy.filter(p=>
-                p.types.includes(payload)
-            )
+            const pokemonFiltered = 
+            payload === "default" 
+            ? state.pokemonsCopy 
+            : state.pokemonsCopy.filter(poke => poke.types.includes(payload))
             return {
                 ...state,
-                pokemons: filter_pokes
+                pokemons: pokemonFiltered
             }
         case FILTER_ORDER:
-            const pokemnosTem = [...state.pokemonsCopy]
+            const pokemonsOrdered = [...state.pokemonsCopy]
             if(payload === 'Ascendant'){
-                pokemnosTem.sort((a,b)=> {      //A = Orden alfabetico de manera ascendete
+                pokemonsOrdered.sort((a,b)=> {      //A = Orden alfabetico de manera ascendete
                     if (a.name < b.name) {
                         return -1;
                       }
-                      if (a.name > b.name) {
+                    if (a.name > b.name) {
                         return 1;
-                      }
-                      return 0;
+                    }
+                    return 0;
                 }) 
             }
             if(payload === 'Descendent'){
-                pokemnosTem.sort((a,b)=> {
+                pokemonsOrdered.sort((a,b)=> {
                     if (a.name > b.name) {
                         return -1;
-                      }
-                      if (a.name < b.name) {
+                    }
+                    if (a.name < b.name) {
                         return 1;
-                      }
-                      return 0;
+                    }
+                    return 0;
                 })
             }
             if(payload === 'High Attack'){
-                pokemnosTem.sort((a,b)=> a.attack - b.attack)
+                pokemonsOrdered.sort((a,b)=> a.attack - b.attack)
             }
             if(payload === 'Low Attack'){
-                pokemnosTem.sort((a,b)=> b.attack - a.attack)
+                pokemonsOrdered.sort((a,b)=> b.attack - a.attack)
             }
             return {
                 ...state,
-                pokemons: pokemnosTem
+                pokemons: pokemonsOrdered
             }
         case FILTER_ORIGIN:
+            let pokemonsOrigin = [...state.pokemonsCopy]
+            if(payload === "db"){
+                pokemonsOrigin = pokemonsOrigin.filter(pokemon => pokemon.created);
+            }
+            if(payload === "api"){
+                pokemonsOrigin = pokemonsOrigin.filter(pokemon => !pokemon.created);
+            }
             return {
                 ...state,
-                types: payload
+                pokemons: pokemonsOrigin
             }
         default:
             return {

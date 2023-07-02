@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { GET_POKEMONS, GET_BY_NAME, GET_BY_ID, GET_TYPES, FILTER_TYPE, FILTER_ORDER, FILTER_ORIGIN } from './action-types';
 
-export const getPokemons = () => {
+export const getPokemons = (offset) => {
     return async function (dispatch) {
-    const pokemonsApi = await axios.get("http://localhost:3001/pokemons");
+    const pokemonsApi = await axios.get("http://localhost:3001/pokemons?offset="+offset);
     const pokemons = pokemonsApi.data.map((pokemon) => {
         return {
             id: pokemon.id,
@@ -15,7 +15,8 @@ export const getPokemons = () => {
             defense:pokemon.defense,
             speed:pokemon.speed,
             weight:pokemon.weight,
-            height:pokemon.height
+            height:pokemon.height,
+            created:pokemon.created ? true : false
            
         }
     })

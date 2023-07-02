@@ -3,15 +3,17 @@ const { getAllPokemons, getPokemonById, getPokemonByName, createPokemonDb,} = re
 // 📍 GET | /pokemons
 const getAllPokemonsHandler = async (req, res) => {
     
-    const {name} = req.query;
+    const {name, offset} = req.query;
     
+   
     const source = "api"
     try {
+        console.log(offset);
         if(name){
             const pokemonByName = await getPokemonByName(name, source);
             res.status(200).json(pokemonByName);
         }else{
-            const response = await getAllPokemons();
+            const response = await getAllPokemons(offset);
             res.status(200).json(response);
         }
     } catch (error) {

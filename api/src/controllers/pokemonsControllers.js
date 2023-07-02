@@ -13,13 +13,13 @@ const pokemonFormater = (element)=>{
         height:element?.height,
         weight:element?.weight,
         types:element.types?.map((t)=>t.type.name).join(" & "),
-        image:element.sprites?.front_default,
+        image:element.sprites?.other.dream_world.front_default,
     }
 }
 
 // 📍 GET | /pokemons
 // Obtiene un arreglo de objetos, donde cada objeto es un pokemon con su información.
-const getAllPokemons = async () => {
+const getAllPokemons = async (offset) => {
     const pokemonsDb = await Pokemon.findAll({
         include:{
             model:Type,
@@ -29,8 +29,9 @@ const getAllPokemons = async () => {
                 attributes:[]
             }
         }
+        // ?offset=0&limit=20%27
     });//está trayendo todos los pokemons que estén en la database de manera asíncrona porque el método findAll es asíncrono por eso va un await. 
-    const infoApi = (await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=20%27")).data; //trae toda la info de pokemons desde la api y es asíncrona porque es una petición a la api. 
+    const infoApi = (await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=12`)).data; //trae toda la info de pokemons desde la api y es asíncrona porque es una petición a la api. 
     const pokemonsApi = infoApi.results; //acá estamos trayendonos efectivamente la info que queremos de los pokemons desde la api, por eso ponemos results. 
     const infoPokemons = await Promise.all(
         pokemonsApi.map(async (pokemon) => {

@@ -1,0 +1,22 @@
+.details {
+    border: 1px greenyellow; /*color del borde*/
+    background-color: beige;
+    border-radius: 25px; /*borde más redondeado*/
+    width: 500px; /*achicar el ancho de las tarjetitas*/
+    padding: 30px;
+    height: 900px;
+    box-shadow: 0 0 20px lightblue; /*sombra que queda detrás*/
+    margin: auto;
+   
+}
+
+.image-container {
+    width: 700px; /* Tamaño deseado para la imagen */
+    height: 200px;
+    margin-right: 2px; 
+    
+  }
+.image-container img {
+    transform: scale(2);
+} 
+

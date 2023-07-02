@@ -28,7 +28,6 @@ function Filters() {
 
   return (
     <>
-        <h2>Filtros</h2>
         <select onChange={handlerTypes}>
             <option value="default">Choose a pokemon type</option>
             {types.map((type, index) => (
