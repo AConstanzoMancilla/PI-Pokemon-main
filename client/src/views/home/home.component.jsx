@@ -5,6 +5,7 @@ import NavBar from '../../components/navBar/navBar.component';
 import Cards from '../../components/cards/cards.component';
 import Filters from '../../components/filters/filters.component';
 import {getPokemons} from '../../redux/actions';
+import { Link } from 'react-router-dom';
 
 import './home.styles.css';
 
@@ -36,6 +37,11 @@ function Home() {
       <Cards allPokemons = {allPokemons} />
       <button onClick={() => previousPage()}>PREVIOUS</button>
       <button onClick={() => nextPage()}>NEXT</button>
+
+      <button>
+        <Link to='/create'>Create a new pokemon</Link>
+      </button>
+   
     
     </div>
   );

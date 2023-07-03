@@ -10,8 +10,6 @@ function Landing() {
       </div>
 
 
-
-      
       <button className="botón">
         <Link to='/home'>HOME</Link>
       </button>

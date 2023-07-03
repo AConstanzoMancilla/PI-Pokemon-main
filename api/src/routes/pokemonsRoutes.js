@@ -10,7 +10,7 @@ const pokemonsRoutes = Router();
 pokemonsRoutes.get("/", getAllPokemonsHandler);
 
 // GET | /pokemons/:idPokemon
-pokemonsRoutes.get("/:id", getPokemonIdHandler);
+pokemonsRoutes.get("/:id/:source", getPokemonIdHandler);
 
 // GET | /pokemons/name?="..."
 //pokemonsRoutes.get("/", getAllPokemonByNameHandler);

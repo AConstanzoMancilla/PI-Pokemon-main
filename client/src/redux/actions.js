@@ -51,9 +51,9 @@ export const getPokemonByName = (name) => {
         
 }}
 
-export const getPokemonById = (id) => {
+export const getPokemonById = (id,source) => {
     return async function (dispatch) {
-    const pokemonById = await axios.get(`http://localhost:3001/pokemons/${id}`);
+    const pokemonById = await axios.get(`http://localhost:3001/pokemons/${id}/${source}`);
     const pokemon = pokemonById.data
     dispatch({ 
         type: GET_BY_ID, 

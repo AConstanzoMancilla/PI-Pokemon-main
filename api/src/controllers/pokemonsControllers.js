@@ -48,11 +48,20 @@ const getAllPokemons = async (offset) => {
 // Tiene que incluir los datos del tipo de pokemon al que está asociado.
 // Debe funcionar tanto para los pokemones de la API como para los de la base de datos.
 const getPokemonById = async (id, source) => { //será una función asíncrona que está recibiendo id y source por parámetro
+    console.log(id);
     const pokemon = 
     source === "api" // si la fuente es igual a api, tendrá dos opciones //utilizamos la dependencia axios para hacer llamadas asincrónicas  
     ? (await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)).data //acá llamamos a la url externa por el api. //utilizamos temple strings porque el id es DINÁMICO
-    : await Pokemon.findByPk(id); //si la fuente no es la api y es la base de datos, utilizamos el método findByPk, ayuda a acelerar la búsqueda del id. OJO, que también es un método asincrónico, por eso va el await
-    return pokemonFormater(pokemon);
+    : await Pokemon.findOne({ where: { id : id } ,include:{
+        model:Type,
+        as: "pokemonTypes",
+        attributes:["name"],
+        through:{
+            attributes:[]
+        }
+    } }); //si la fuente no es la api y es la base de datos, utilizamos el método findByPk, ayuda a acelerar la búsqueda del id. OJO, que también es un método asincrónico, por eso va el await
+    console.log(pokemon);
+    return  source === "api"  ? pokemonFormater(pokemon) :pokemon;
 }
 
 // 📍 GET | /pokemons/name?="..."

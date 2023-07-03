@@ -24,9 +24,9 @@ const getAllPokemonsHandler = async (req, res) => {
 // 📍 GET | /pokemons/:idPokemon
 const getPokemonIdHandler = async (req, res) => {
     
-    const {id} = req.params;
-    const source = isNaN(id) ? "db" : "api" //Verificamos que la fuente sea un número(buscará en api) o un string(buscará en db)
-    
+    const {id,source} = req.params;
+    //const source = isNaN(id) ? "db" : "api" //Verificamos que la fuente sea un número(buscará en api) o un string(buscará en db)
+    console.log(source,id);
     try {
         const response = await getPokemonById(id, source);
         

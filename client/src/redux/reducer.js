@@ -4,15 +4,20 @@ const initialState = {
     pokemons: [],
     pokemonsCopy: [], //hacemos una copia porque si filtramos el state se puede modificar completo y esa no es la idea
     pokemon: {},
-    types: []
+    types: [],
+    source: "api"
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch(type){
         case GET_POKEMONS:
+            let pokemonsOriginHome = [...payload]
+            if(state.source === "api"){
+                pokemonsOriginHome = pokemonsOriginHome.filter(pokemon => !pokemon.created);
+            }
             return {
                 ...state,
-                pokemons: payload,
+                pokemons: pokemonsOriginHome,
                 pokemonsCopy: payload
             }
         case GET_BY_NAME:
