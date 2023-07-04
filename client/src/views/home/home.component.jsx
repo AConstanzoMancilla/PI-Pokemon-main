@@ -5,7 +5,7 @@ import NavBar from '../../components/navBar/navBar.component';
 import Cards from '../../components/cards/cards.component';
 import Filters from '../../components/filters/filters.component';
 import {getPokemons} from '../../redux/actions';
-import { Link } from 'react-router-dom';
+
 
 import './home.styles.css';
 
@@ -35,12 +35,20 @@ function Home() {
       <NavBar/>
       <Filters/>
       <Cards allPokemons = {allPokemons} />
-      <button className="botón" onClick={() => previousPage()}>Previus page</button>
-      <button className="botón" onClick={() => nextPage()}>Next page</button>
 
-      <button className="botón">
-        <Link to='/create'>Create a new pokemon</Link>
-      </button>
+
+
+
+
+
+
+      <div className='buttoncontainer'>
+        <button className="buttonPage" onClick={() => previousPage()}>Previus page</button>
+        <button className="buttonPage" onClick={() => nextPage()}>Next page</button>
+       
+      </div>
+
+      
    
     
     </div>

@@ -8,14 +8,26 @@
     /*margin-bottom: 30px; /*le estoy dando un margen*/
 /*} */
 
-.botón {
+.buttonInput {
     font-family: 'Playfair Display', serif;
     font-size: 18px;
-    padding: 10px 20px;
+    padding: 10px;
+    background-color:yellow;
+    color: black;
+    border:10px pink;
+    border-radius: 50px pink;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttonSearch {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    padding: 10px;
     background-color:whitesmoke;
     color: black;
-    border: none;
-    border-radius: 4px;
+    border:10px yellow;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

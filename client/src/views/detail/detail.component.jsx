@@ -3,6 +3,8 @@ import { useEffect , useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPokemonById } from '../../redux/actions'
 import { useParams } from 'react-router-dom';
+import NavBar from '../../components/navBar/navBar.component';
+
 
 function Detail() {
   const { id , source} = useParams();
@@ -40,9 +42,11 @@ const stringType = ( pokemonTypes) => {
 }
 
   return (
-    <div className="container">
-    <div className="details"key={pokemon.id}>
+    <div className="containerDetails">
+      <NavBar/>
+    <div className="details" key={pokemon.id}>
       <h1>Name:{pokemon.name}</h1>
+      <hr/>
       <h2># Id:{pokemon.id}</h2>
       <h2>❣️ Hp:{pokemon.hp}</h2>
       <h2>⚔ Attack:{pokemon.attack}</h2>
@@ -55,6 +59,7 @@ const stringType = ( pokemonTypes) => {
     <div className="image-container">
       <img src={pokemon.image}/>
     </div>
+  
   
     
     </div>

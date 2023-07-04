@@ -1,34 +1,38 @@
-.container {
+.containerDetails {
     justify-items: center;
     align-items: center;
-    width: 3150px; 
-    /* padding: 10px; */
-    height: 1600px;
+    margin-top: 0px;
+    background-image: url(https://wallpaper.dog/large/20419020.png);
+    background-size: cover;
+    height: 1050px;
 }
 
-
-
 .details {
-    border: 15px black; /*color del borde*/
+    border: 50px greenyellow; /*color del borde*/
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
     background-color: beige;
     border-radius: 100px; /*borde más redondeado*/
-    width: 600px; /*achicar el ancho de las tarjetitas*/
+    width: 300px; /*achicar el ancho de las tarjetitas*/
     padding: 100px;
-    height: 400px;
-    box-shadow: 0 0 20px lightblue; /*sombra que queda detrás*/
+    height: 450px;
+    box-shadow: 0 0 80px yellowgreen; /*sombra que queda detrás*/
+    margin-top: 100px;
     margin: auto;
-    justify-items: center;
+    position:absolute;
+    top: 120px;
+    right: 800px; 
+    text-align: center; /*centrar el texto*/
 }
 
 .image-container {
-    width: 150px; /* Tamaño deseado para la imagen */
-    height: 20px;
-    margin-right: 200px;
- 
-    
-  }
+    position: absolute;
+    top: 250px;
+    left: 200px;
+}
+  
 .image-container img {
-    transform: scale(2.5);
+    transform: scale(1.65);
 } 
 
 .card-container {
@@ -48,6 +52,17 @@
     margin:auto;
 }
 
+.buttonBackHome {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    padding: 10px;
+    background-color:whitesmoke;
+    color: black;
+    border:10px yellow;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
 
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypes } from '../../redux/actions';
+import NavBar from '../../components/navBar/navBar.component';
 
 function Create() {
 
@@ -140,6 +141,7 @@ function Create() {
 
   return (
     <div className="container">
+      <NavBar/>
       <div>
         <h1 className="title">Create your pokemon</h1>
       </div>

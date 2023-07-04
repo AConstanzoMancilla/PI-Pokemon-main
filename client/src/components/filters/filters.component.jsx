@@ -27,8 +27,8 @@ function Filters() {
     }
 
   return (
-    <>
-        <select className="botón" onChange={handlerTypes}>
+    <div className='filtercontainer'>
+        <select className="buttonFilters" onChange={handlerTypes}>
             <option value="default">Choose a pokemon type</option>
             {types.map((type, index) => (
               
@@ -36,7 +36,7 @@ function Filters() {
             ))}
         </select>
 
-        <select className="botón" id="order" onChange={handlerOrder}>
+        <select className="buttonFilters" id="order" onChange={handlerOrder}>
             <option value="default">Choose order</option>
             <option value="Ascendant">Ascendant</option>
             <option value="Descendent">Descendent</option>
@@ -45,12 +45,12 @@ function Filters() {
 
         </select>
 
-        <select className="botón" id="origin" onChange={handlerOrigin}>
+        <select className="buttonFilters" id="origin" onChange={handlerOrigin}>
             <option value="default">Choose origin</option>
             <option value="api">Pokemon from API</option>
             <option value="db">Pokemon from DB</option>
         </select>
-    </>
+    </div>
   );
 }
 

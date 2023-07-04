@@ -2,9 +2,9 @@
     background-image: url(https://wallpaperaccess.com/full/4167709.gif); /*color del fondo*/
     background-size: cover;
     border-radius: 10px; /*borde más redondeado*/
-    width: 1850px; 
+    width: 2350px; 
     /* padding: 10px; */
-    height: 900px;
+    height: 1150px;
     box-shadow: 0 0 20px lightblue; /*sombra que queda detrás*/
     justify-content: center;
     align-items:center;
@@ -21,24 +21,25 @@
     text-align-last: center;
 }
 
-.botón {
+.buttonLanding {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     padding: 10px 20px;
     background-color:whitesmoke;
     color: black;
-    border: none;
+    border: black;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     justify-content:center;
+    margin-top: 350px;
 
 }
-.botón:hover {
+.buttonLanding:hover {
     background-color: transparent; /*555*/
   }
   
-.botón:focus {
+.buttonLanding:focus {
     outline: none;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }

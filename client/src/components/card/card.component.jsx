@@ -11,6 +11,7 @@ function Card({pokemon}) {
       <h2>Name: {name}</h2>
       <img className="image" src={image}/>
       <p>Types: {types}</p>
+      
     </div>
     </Link>
   );

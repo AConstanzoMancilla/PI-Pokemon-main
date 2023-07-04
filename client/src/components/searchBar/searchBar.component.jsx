@@ -28,10 +28,10 @@ function SearchBar() {
     }
   }
   return (
-    <div>
+    <div className='searchbar'>
       <form onSubmit={handleOnSubmit}>
-        <input className="botón" placeholder="Find a pokemon" value={searchPokemon} onChange={handleChange} />
-        <button className="botón" type="submit">Search</button>
+        <input className="buttonInput" placeholder="Find a pokemon" value={searchPokemon} onChange={handleChange} />
+        <button className="buttonSearch" type="submit">Search</button>
       </form>
       
     </div>
