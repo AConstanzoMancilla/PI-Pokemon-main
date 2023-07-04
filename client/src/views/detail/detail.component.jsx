@@ -40,24 +40,24 @@ const stringType = ( pokemonTypes) => {
 }
 
   return (
-    <>
+    <div className="container">
     <div className="details"key={pokemon.id}>
       <h1>Name:{pokemon.name}</h1>
-      <h2>Id:{pokemon.id}</h2>
-      <h2>Hp:{pokemon.hp}</h2>
-      <h2>Attack:{pokemon.attack}</h2>
-      <h2>Defense:{pokemon.defense}</h2>
-      <h2>Speed:{pokemon.speed}</h2>
-      <h2>Height:{pokemon.height}</h2>
-      <h2>Weight:{pokemon.weight}</h2>
-      <h2>Types:{pokemon.types ? pokemon.types : pokemon.pokemonTypes? stringType(pokemon.pokemonTypes) :  null }</h2>
+      <h2># Id:{pokemon.id}</h2>
+      <h2>❣️ Hp:{pokemon.hp}</h2>
+      <h2>⚔ Attack:{pokemon.attack}</h2>
+      <h2>🛡 Defense:{pokemon.defense}</h2>
+      <h2>👣 Speed:{pokemon.speed}</h2>
+      <h2>📊 Height:{pokemon.height}</h2>
+      <h2>⚖ Weight:{pokemon.weight}</h2>
+      <h2>🧬 Types:{pokemon.types ? pokemon.types : pokemon.pokemonTypes? stringType(pokemon.pokemonTypes) :  null }</h2>
     </div>
     <div className="image-container">
       <img src={pokemon.image}/>
     </div>
   
     
-    </>
+    </div>
   );
 }
 

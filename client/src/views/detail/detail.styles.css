@@ -1,22 +1,53 @@
+.container {
+    justify-items: center;
+    align-items: center;
+    width: 3150px; 
+    /* padding: 10px; */
+    height: 1600px;
+}
+
+
+
 .details {
-    border: 1px greenyellow; /*color del borde*/
+    border: 15px black; /*color del borde*/
     background-color: beige;
-    border-radius: 25px; /*borde más redondeado*/
-    width: 500px; /*achicar el ancho de las tarjetitas*/
-    padding: 30px;
-    height: 900px;
+    border-radius: 100px; /*borde más redondeado*/
+    width: 600px; /*achicar el ancho de las tarjetitas*/
+    padding: 100px;
+    height: 400px;
     box-shadow: 0 0 20px lightblue; /*sombra que queda detrás*/
     margin: auto;
-   
+    justify-items: center;
 }
 
 .image-container {
-    width: 700px; /* Tamaño deseado para la imagen */
-    height: 200px;
-    margin-right: 2px; 
+    width: 150px; /* Tamaño deseado para la imagen */
+    height: 20px;
+    margin-right: 200px;
+ 
     
   }
 .image-container img {
-    transform: scale(2);
+    transform: scale(2.5);
 } 
+
+.card-container {
+    display: flex; /*libertad de los elementos dentro del contenedor y se puedan mover libremente dentro de esa area*/
+    flex-direction: column; /*para que los separe y los ponga en línea*/
+    width: 380px; 
+    height: 395px; 
+    background-color: beige; /*color al fondo*/
+    border: 1px solid grey; /*borde sólido a la tarjeta*/
+    border-radius: 20px; /*borde para que no se vea tan cuadrado*/
+    padding: 25px; /*espacio interior o margen interior*/
+    cursor: pointer; /*para que cuando me pare sobre la cartita el cursor sea una mano*/
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0.2);
+    transition: transform 0.5s ease-out;
+    margin:auto;
+}
+
+
+
 

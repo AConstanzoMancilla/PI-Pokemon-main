@@ -31,14 +31,14 @@ function Home() {
   }, [dispatch,currentPage]) //el array de dependencias es para ver en qué momento quiero que se ejecute la action, en este caso es cuando se monta 
   
   return (
-    <div>
+    <div className="home">
       <NavBar/>
       <Filters/>
       <Cards allPokemons = {allPokemons} />
-      <button onClick={() => previousPage()}>PREVIOUS</button>
-      <button onClick={() => nextPage()}>NEXT</button>
+      <button className="botón" onClick={() => previousPage()}>Previus page</button>
+      <button className="botón" onClick={() => nextPage()}>Next page</button>
 
-      <button>
+      <button className="botón">
         <Link to='/create'>Create a new pokemon</Link>
       </button>
    

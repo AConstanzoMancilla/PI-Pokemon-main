@@ -139,20 +139,20 @@ function Create() {
   }
 
   return (
-    <div>
+    <div className="container">
       <div>
-        <h1>Esta es la Create page</h1>
+        <h1 className="title">Create your pokemon</h1>
       </div>
-      <form onSubmit={handlerSubmit}>
-      <div>
+      <form className="form-container" onSubmit={handlerSubmit}>
+      <div className="inputs">
           <label>Id:</label>
-          <input name="id" type="number" placeholder="Create an id" value={form.id} onChange={handlerChange}></input>
+          <input className="id" name="id" type="number" placeholder="Create an id" value={form.id} onChange={handlerChange}></input>
           {errors.id && <p>{errors.id}</p>}
         </div>
         <hr/>
         <div>
           <label>Name:</label>
-          <input name="name" type="text" placeholder="Create a name" value={form.name} onChange={handlerChange}></input>
+          <input className="name" name="name" type="text" placeholder="Create a name" value={form.name} onChange={handlerChange}></input>
           {errors.name && <p>{errors.name}</p>}
         </div>
         <hr/>
@@ -164,37 +164,37 @@ function Create() {
         <hr/>
         <div>
           <label>Hp</label>
-          <input name="hp" type="number" placeholder="Pokemon lives" value={form.hp} onChange={handlerChange}></input>
+          <input className="hp" name="hp" type="number" placeholder="Pokemon lives" value={form.hp} onChange={handlerChange}></input>
           {errors.hp && <p>{errors.hp}</p>}
         </div>
         <hr/>
         <div>
           <label>Attack</label>
-          <input name="attack" type="number" placeholder="Pokemon attack" value={form.attack} onChange={handlerChange}></input>
+          <input className="attack" name="attack" type="number" placeholder="Pokemon attack" value={form.attack} onChange={handlerChange}></input>
           {errors.attack && <p>{errors.attack}</p>}
         </div>
         <hr/>
         <div>
           <label>Defense</label>
-          <input name="defense" type="number" placeholder="Pokemon defense" value={form.defense} onChange={handlerChange}></input>
+          <input className="defense" name="defense" type="number" placeholder="Pokemon defense" value={form.defense} onChange={handlerChange}></input>
           {errors.defense && <p>{errors.defense}</p>}
         </div>
         <hr/>
         <div>
           <label>Speed:</label>
-          <input name="speed" type="number" placeholder="Pokemon speed" value={form.speed} onChange={handlerChange}></input>
+          <input className="speed" name="speed"  type="number" placeholder="Pokemon speed" value={form.speed} onChange={handlerChange}></input>
           {errors.speed && <p>{errors.speed}</p>}
         </div>
         <hr/>
         <div>
           <label>Height</label>
-          <input name="height" type="number" placeholder="Pokemon height" value={form.height} onChange={handlerChange}></input>
+          <input  className="height" name="height" type="number" placeholder="Pokemon height" value={form.height} onChange={handlerChange}></input>
           {errors.height && <p>{errors.height}</p>}
         </div>
         <hr/>
         <div>
           <label>Weight</label>
-          <input name="weight" type="number" placeholder="Pokemon weight" value={form.weight} onChange={handlerChange}></input>
+          <input className="weight" name="weight" type="number" placeholder="Pokemon weight" value={form.weight} onChange={handlerChange}></input>
           {errors.weight && <p>{errors.weight}</p>}
         </div>
         <hr/>

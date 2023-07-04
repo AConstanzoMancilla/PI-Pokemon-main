@@ -1,7 +1,9 @@
 .cards-list {
-    width: 85 vw; /*contenedor ocupe el 85% de la view width, vale decir, del ancho de la pantalla*/
+    /* width: 15 vw; contenedor ocupe el 85% de la view width, vale decir, del ancho de la pantalla */
     margin: 0 auto; /*para que no agregue espacio extra a ningun lado*/
     display: grid; /*encasilla las cards*/
     grid-template-columns: 1fr 1fr 1fr 1fr; /*genera 4 columnas del mismo tamaño*/
-    grid-gap: 20px;/*espacio entre cada tarjeta de 20px*/
+    grid-gap: 25px;/*espacio entre cada tarjeta de 20px*/
+    width: 1850px;
+    height: 900px;
 }

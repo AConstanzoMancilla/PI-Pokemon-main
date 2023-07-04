@@ -2,35 +2,40 @@
     background-image: url(https://wallpaperaccess.com/full/4167709.gif); /*color del fondo*/
     background-size: cover;
     border-radius: 10px; /*borde más redondeado*/
-    width: 2350px; 
+    width: 1850px; 
     /* padding: 10px; */
-    height: 1180px;
+    height: 900px;
     box-shadow: 0 0 20px lightblue; /*sombra que queda detrás*/
     justify-content: center;
+    align-items:center;
     margin:auto;
     text-align:center;
-    margin-top: 5px;
 }
 
 .title {
     color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    text-align:left; 
+    margin:auto;
+    text-align-last: center;
 }
 
 .botón {
-    font-family: 'Arial', sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     padding: 10px 20px;
     background-color:whitesmoke;
     color: black;
     border: none;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    justify-content:center;
+
 }
-
-
 .botón:hover {
-    background-color: #555;
+    background-color: transparent; /*555*/
   }
   
 .botón:focus {

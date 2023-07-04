@@ -6,7 +6,13 @@ function Landing() {
   return (
     <div className="landing">
       <div className="title">
+
+
+<hr/>
         <h1>Welcome to pokemons page</h1>
+      
+      
+      
       </div>
 
 

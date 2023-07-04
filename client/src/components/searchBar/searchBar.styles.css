@@ -7,3 +7,15 @@
     /*line-height: 30px; /*le estoy dando que la altura de la línea sea especifica */
     /*margin-bottom: 30px; /*le estoy dando un margen*/
 /*} */
+
+.botón {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color:whitesmoke;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
