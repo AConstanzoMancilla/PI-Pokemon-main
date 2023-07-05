@@ -7,18 +7,18 @@ function Filters() {
     const dispatch = useDispatch();
 
     const types = useSelector((state) => state.types)
-    console.log('types',types);
+    
     useEffect(() => {
         dispatch(getTypes())
     }, []);
 
     const handlerTypes = (event) => {
-        console.log(event.target.value)
+        
         dispatch(filterType(event.target.value))
     }
 
     const handlerOrder = (event) => {
-        console.log('handlerOrder',event.target.value);
+        
         dispatch(filterOrder(event.target.value))
     }
     

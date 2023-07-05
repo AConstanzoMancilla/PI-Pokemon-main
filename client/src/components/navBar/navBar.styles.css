@@ -1,51 +1,68 @@
 .navbar{
     display:flex;
-    border: 25px greenyellow;
+    border: 2px solid rgb(98, 234, 35);
     border-radius: 20px;
-    background-color:#36454F;
+    background-color:black;
     height: 90px;
     margin-top: 5px;
 }
 
 .searchbar{
     position: absolute;
-    left: 40%;
+    left: 45%;
     top: 45px;
 }
 .backHome{
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     padding: 10px 20px;
-    background-color: whitesmoke;
+    background-color: white;
     color: black;
-    border: none;
+    box-shadow: 0 0 30px rgb(17, 255, 0); /*sombra que queda detrás*/
+    border: 2px solid yellowgreen;
     border-radius: 4px;
     cursor: pointer;
     margin-bottom: 5px;
     transition: background-color 0.3s ease;
+    outline:none;
     position: absolute;
-    left: 302px;
+    left: 482px;
     top: 45px;
-   
+    transition: .5s, color .10s;
+        -webkit-transition: .5s, color .10s;
+        -moz-transition: .5s, color .10s;
 }
+
+.backHome:hover{
+    transform: translatex(-20px);
+        -webkit-transform: translatex(-20px);
+        -moz-transform: translatex(-20px);
+}
+
+.backHome:focus{
+    outline:none;
+
+}
+
+
 .buttonCreateInNavBar {
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     padding: 10px 20px;
-    background-color: whitesmoke;
+    background-color: white;
+    
     color: black;
-    border: none;
+    border: 2px solid #fbff00;
     border-radius: 4px;
     cursor: pointer;
     margin-bottom: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.6s ease;
     position: absolute;
     right: 232px;
     top: 45px;
 }
 
-              
-.buttonCreateInNavBar:hover {
+.buttonCreateInNavBar:hover{
     animation-name: surprise;
         -webkit-animation-name: surprise;
         -moz-animation-name: surprise;
@@ -53,3 +70,18 @@
         -webkit-animation-duration: .8s;
         -moz-animation-duration: .8s;
 }
+
+    @keyframes surprise
+    {
+        0% {transform: rotate(0deg) scale(1,1);;}
+        10% {transform: rotate(7deg) scale(2,2);}
+        20% {transform: rotate(-7deg) scale(2,2);}
+        30% {transform: rotate(7deg) scale(2,2);}
+        40% {transform: rotate(-7deg) scale(2,2);}
+        50% {transform: rotate(7deg) scale(2,2);}
+        60% {transform: rotate(-7deg) scale(2,2);}
+        70% {transform: rotate(7deg) scale(2,2);}
+        80% {transform: rotate(-7deg) scale(2,2);}
+        90% {transform: rotate(7deg) scale(2,2);}
+        100% {transform: rotate(0deg) scale(1,1);}
+    }

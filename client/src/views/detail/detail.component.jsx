@@ -18,7 +18,7 @@ function Detail() {
   }, [id]); //array de dependencias: UseEffect se vuelve a ejecutar cuando cambia el id o el dispatch.  
 
   let types = ""
-  console.log(pokemon.pokemonTypes);
+  
   if(!pokemon.pokemonTypes) { //si existe un types en la propiedad pokemon del global state
     types=pokemon.types //que dentro de types aparezca pokemon.types
   } else if (pokemon.Types) { //pero si en el model Type, existe busca los types del model.  

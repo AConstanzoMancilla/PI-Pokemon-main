@@ -6,19 +6,5 @@
     max-height: 500px;
     margin: auto;
     
-    
 
-
-
-
-
-
-
-    /* width: 15 vw; contenedor ocupe el 85% de la view width, vale decir, del ancho de la pantalla */
-    /*margin: auto; /*para que no agregue espacio extra a ningun lado*/
-    /*display: grid; /*encasilla las cards*/
-    /*grid-template-columns: 1fr 1fr 1fr 1fr; /*genera 4 columnas del mismo tamaño*/
-    /*grid-gap: 25px;/*espacio entre cada tarjeta de 20px*/
-    /*width: 1850px;
-    /*height: 1150px;*/
 }

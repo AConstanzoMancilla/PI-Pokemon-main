@@ -1,10 +1,11 @@
 .containerDetails {
-    justify-items: center;
     align-items: center;
-    margin-top: 0px;
     background-image: url(https://wallpaper.dog/large/20419020.png);
     background-size: cover;
     height: 1050px;
+    padding: 10px;
+    border-radius: 10px;/* borde más redondeado*/
+    
 }
 
 .details {
@@ -17,17 +18,17 @@
     padding: 100px;
     height: 450px;
     box-shadow: 0 0 80px yellowgreen; /*sombra que queda detrás*/
-    margin-top: 100px;
+    margin-top: 200px;
     margin: auto;
     position:absolute;
-    top: 120px;
+    top: 130px;
     right: 800px; 
     text-align: center; /*centrar el texto*/
 }
 
 .image-container {
     position: absolute;
-    top: 250px;
+    top: 258px;
     left: 200px;
 }
   
@@ -52,17 +53,7 @@
     margin:auto;
 }
 
-.buttonBackHome {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    padding: 10px;
-    background-color:whitesmoke;
-    color: black;
-    border:10px yellow;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+
 
 
 

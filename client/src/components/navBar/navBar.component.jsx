@@ -6,10 +6,10 @@ function NavBar() {
     <div className="navbar">
         <SearchBar className='searchbar'/>
         <button className="buttonCreateInNavBar">
-        <Link to='/create'>⚡️Create a new pokemon</Link>
+          <Link to='/create'>⚡️Create a new pokemon</Link>
         </button>
         <button className="backHome">
-          <Link to={`/home`}>Back Home</Link>
+          <Link to='/home'>Back Home</Link>
         </button>
         
     </div>

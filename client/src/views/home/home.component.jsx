@@ -35,22 +35,10 @@ function Home() {
       <NavBar/>
       <Filters/>
       <Cards allPokemons = {allPokemons} />
-
-
-
-
-
-
-
       <div className='buttoncontainer'>
         <button className="buttonPage" onClick={() => previousPage()}>Previus page</button>
         <button className="buttonPage" onClick={() => nextPage()}>Next page</button>
-       
       </div>
-
-      
-   
-    
     </div>
   );
 }
