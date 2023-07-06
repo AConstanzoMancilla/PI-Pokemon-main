@@ -26,7 +26,7 @@ export const getPokemons = (offset) => {
     }
 }
 
-const stringType = ( pokemonTypes) => {
+const stringType = (pokemonTypes) => {
     if(pokemonTypes.length > 1 ){
         return pokemonTypes[0].name +" & "+  pokemonTypes[1].name
     }else{

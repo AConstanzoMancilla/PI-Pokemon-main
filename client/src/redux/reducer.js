@@ -1,9 +1,9 @@
 import { GET_BY_NAME, GET_POKEMONS, GET_BY_ID, GET_TYPES, FILTER_TYPE, FILTER_ORDER, FILTER_ORIGIN } from './action-types';
 
 const initialState = {
-    pokemons: [],
+    pokemons: [],//es el que se renderiza, entonces este es el que estará filtrado.
     pokemonsCopy: [], //hacemos una copia porque si filtramos el state se puede modificar completo y esa no es la idea
-    pokemonsCopyBySource : [],
+    pokemonsCopyBySource : [],//filtrado por api o db sin filtros, este es el que se ocupa para los filtros
     pokemon: {},
     types: [],
     source: "api"
@@ -11,7 +11,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch(type){
-        case GET_POKEMONS:
+        case GET_POKEMONS: //son los que vienen de la api y que no tienen el atributo created
             let pokemonsOriginHome = [...payload]
             if(state.source === "api"){
                 pokemonsOriginHome = pokemonsOriginHome.filter(pokemon => !pokemon.created);

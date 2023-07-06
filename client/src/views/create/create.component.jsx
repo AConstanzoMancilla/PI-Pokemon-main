@@ -153,7 +153,8 @@ function Create() {
       const send = await axios.post("http://localhost:3001/pokemons", form)
       pokemonCreated = true;
     } catch (error) {
-      console.log(error);
+      alert(("This pokemon ID was already created, change the ID "))
+      // console.log(error.message);
     }
 
     if(pokemonCreated) {

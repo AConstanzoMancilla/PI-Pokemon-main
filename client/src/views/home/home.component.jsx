@@ -15,7 +15,7 @@ function Home() {
   const allPokemons = useSelector((state) => state.pokemons); //estamos creando un state y con useSelector se indica a qué estado(del reducer) está suscrito el componente 
   
   const [currentPage, setCurrentPage] = useState(0); //estado local para ver en qué pagina estoy actualmente
-  const pokemonsPerPage = 12; //esto muestra el inicio de los pokemons
+  const pokemonsPerPage = 12; //pokemons por pagina
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
