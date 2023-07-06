@@ -4,10 +4,12 @@ import {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypes } from '../../redux/actions';
 import NavBar from '../../components/navBar/navBar.component';
+import { useNavigate } from "react-router-dom";
 
 function Create() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const types = useSelector((state) => state.types)
 
@@ -51,83 +53,100 @@ function Create() {
       ...form, 
       [event.target.name] : event.target.value
     })
-    validate()
+   
   }
+
+  useEffect(() => {
+  
+    validate()
+   
+  }, [form]);
 
 
   const validate = () => {
+    console.log('mami sabe ',form,errors);
     // //id
-    if(/^[a-zA-Z]+$/.test(form.id)){
-      setErrors({
-        ...errors,
-        id: "Id must be a number"
-      })
+    if(!/^[0-9]+$/.test(form.id) && form.id != ""){
+      errors.id = "Id must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, id: ""})}
+    else {
+      errors.id =""
+      setErrors(errors)
+    }
     //name
-    if(/^[A-Za-z]+$/.test(form.name)){
-      setErrors({
-        ...errors,
-        name: "Name must be only letters"
-      })
+    if(!/^[a-zA-Z]+$/.test(form.name) && form.name != ""){
+      console.log('mami sabe ',form.name,errors);
+      errors.name =  "Name must be only letters"
+      setErrors(errors)
     }
-    else {setErrors({...errors, name: ""})}
+    else {
+      errors.name =""
+      setErrors(errors)
+    }
     //image
-    if(/^https?:\/\/(?:www\.)?\S+\.(?:jpg|jpeg|gif|png)$/.test(form.image)){
-      setErrors({
-        ...errors,
-        image: "Invalid url, try another one "
-      })
+    if(!/^https?:\/\/(?:www\.)?\S+\.(?:jpg|jpeg|gif|png)$/.test(form.image) && form.image != ""){
+      errors.image = "Invalid url, try another one"
+      setErrors(errors)
     }
-    else {setErrors({...errors, image: ""})}
+    else {
+      errors.image =""
+      setErrors(errors)
+    }
     //hp
-    if(form.hp.length > 100){
-      setErrors({
-        ...errors,
-        hp: "Hp must be less than 100"
-      })
+    if(!/^[0-9]+$/.test(form.hp)  && form.hp != ""){
+      errors.hp = "Hp must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, hp: ""})}
+    else {
+      errors.hp =""
+      setErrors(errors)
+    }
     //attack
-    if(form.attack.length > 80){
-      setErrors({
-        ...errors,
-        attack: "Attack must be less than 80"
-      })
+    if(!/^[0-9]+$/.test(form.attack) && form.attack != ""){
+      errors.attack= "Attack must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, attack: ""})}
+    else {
+      errors.attack =""
+      setErrors(errors)
+    }
     //defense
-    if(form.defense.length > 80){
-      setErrors({
-        ...errors,
-        defense: "Defense must be less than 80"
-      })
+    if(!/^[0-9]+$/.test(form.defense) && form.defense != ""){
+      errors.defense = "Defense must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, defense: ""})}
+    else {
+      errors.defense =""
+      setErrors(errors)
+    }
     //speed
-    if(form.speed.length > 200){
-      setErrors({
-        ...errors,
-        speed: "Speed must be less than 200"
-      })
+    if(!/^[0-9]+$/.test(form.speed) && form.speed != ""){
+      errors.speed = "Speed must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, speed: ""})}
+    else {
+      errors.speed =""
+      setErrors(errors)
+    }
     //height
-    if(form.height.length > 200){
-      setErrors({
-        ...errors,
-        height: "Height must be less than 200"
-      })
+    if(!/^[0-9]+$/.test(form.height) && form.height != ""){
+      errors.height = "Height must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, height: ""})}
+    else {
+      errors.height =""
+      setErrors(errors)
+    }
     //weight
-    if(form.weight.length > 150){
-      setErrors({
-        ...errors,
-        weight: "Weight must be less than 150"
-      })
+    if(!/^[0-9]+$/.test(form.weight) && form.weight != ""){
+      errors.weight = "Weight must be a number"
+      setErrors(errors)
     }
-    else {setErrors({...errors, weight: ""})}
+    else {
+      errors.weight =""
+      setErrors(errors)
+    }
   }
 
   const handlerSubmit =  async (event) => {
@@ -142,7 +161,7 @@ function Create() {
     }
 
     if(pokemonCreated) {
-      alert("Your new pokemon has been created");
+     
         setForm({ 
           id: "",
           name: "", 
@@ -156,9 +175,14 @@ function Create() {
           type1: "",
           type2: ""
         })
+        var confirmation = window.confirm("Your new pokemon has been created return to home ?");
+
+        if (confirmation) {
+          // Aquí puedes llamar a la función que deseas ejecutar
+          navigate("/home");
+        }
       }
     }
-  
 
   return (
     <div className="containerForm">
@@ -169,47 +193,47 @@ function Create() {
         <h1>Complete the form</h1>
         <div>
           <label>Id:</label>
-          <input className="id" name="id" type="number" placeholder="Create an id" value={form.id} onChange={handlerChange}></input>
+          <input className="id" name="id" placeholder="Create an id" value={form.id} onChange={handlerChange}></input>
           {errors.id && <p>{errors.id}</p>}
         </div>
         <div>
           <label>Name:</label>
-          <input className="name" name="name" type="text" placeholder="Create a name" value={form.name} onChange={handlerChange}></input>
-          {errors.name && <p>{errors.name}</p>}
+          <input className="name" name="name" placeholder="Create a name" value={form.name} onChange={handlerChange}></input>
+          {<p>{errors.name &&  errors.name}</p>}
         </div>
         <div>
           <label>Image:</label>
-          <input className="image" name="image" type="text" placeholder="Pokemon image url" value={form.image} onChange={handlerChange}></input>
+          <input className="image_form" name="image" type="text" placeholder="Pokemon image url" value={form.image} onChange={handlerChange}></input>
           {errors.image && <p>{errors.image}</p>}
         </div>
         <div>
           <label>Hp</label>
-          <input className="hp" name="hp" type="number" placeholder="Pokemon lives" value={form.hp} onChange={handlerChange}></input>
+          <input className="hp" name="hp"  placeholder="Pokemon lives" value={form.hp} onChange={handlerChange}></input>
           {errors.hp && <p>{errors.hp}</p>}
         </div>
         <div>
           <label>Attack</label>
-          <input className="attack" name="attack" type="number" placeholder="Pokemon attack" value={form.attack} onChange={handlerChange}></input>
+          <input className="attack" name="attack" placeholder="Pokemon attack" value={form.attack} onChange={handlerChange}></input>
           {errors.attack && <p>{errors.attack}</p>}
         </div>
         <div>
           <label>Defense</label>
-          <input className="defense" name="defense" type="number" placeholder="Pokemon defense" value={form.defense} onChange={handlerChange}></input>
+          <input className="defense" name="defense" placeholder="Pokemon defense" value={form.defense} onChange={handlerChange}></input>
           {errors.defense && <p>{errors.defense}</p>}
         </div>
         <div>
           <label>Speed:</label>
-          <input className="speed" name="speed"  type="number" placeholder="Pokemon speed" value={form.speed} onChange={handlerChange}></input>
+          <input className="speed" name="speed" placeholder="Pokemon speed" value={form.speed} onChange={handlerChange}></input>
           {errors.speed && <p>{errors.speed}</p>}
         </div>
         <div>
           <label>Height</label>
-          <input  className="height" name="height" type="number" placeholder="Pokemon height" value={form.height} onChange={handlerChange}></input>
+          <input  className="height" name="height" placeholder="Pokemon height" value={form.height} onChange={handlerChange}></input>
           {errors.height && <p>{errors.height}</p>}
         </div>
         <div>
           <label>Weight</label>
-          <input className="weight" name="weight" type="number" placeholder="Pokemon weight" value={form.weight} onChange={handlerChange}></input>
+          <input className="weight" name="weight" placeholder="Pokemon weight" value={form.weight} onChange={handlerChange}></input>
           {errors.weight && <p>{errors.weight}</p>}
         </div>
         <div>
@@ -237,7 +261,7 @@ function Create() {
           {errors.type2 && <p>{errors.type2}</p>}
         </div>
         
-        <button disabled={!form.name || !form.image || !form.hp || !form.attack || !form.defense || !form.speed || !form.height || !form.weight || !form.type1 || !form.type2 || errors.name || errors.image || errors.hp || errors.attack || errors.defense || errors.speed || errors.height || errors.weight || errors.type1 || errors.type2 }>Create</button>
+        <button disabled={ !form.id || !form.name || !form.image || !form.hp || !form.attack || !form.defense || !form.speed || !form.height || !form.weight || !form.type1 || errors.id || errors.image || errors.hp || errors.attack || errors.defense || errors.speed || errors.height || errors.weight || errors.type1 }>Create</button>
         </div>
       </form>
       </div>

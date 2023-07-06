@@ -1,10 +1,10 @@
 require('dotenv').config(); //sirve para leer el archivo .env con el usuario, password y puerto. 
-const { Sequelize } = require('sequelize'); //utilizamos la dependencia sequelize
+const { Sequelize } = require('sequelize'); //importamos a sequelize para poder comunicar entre query y javascript
 const fs = require('fs');
 const path = require('path');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env; //sirve para traernos la info que está en el archivo .env
 
-const sequelize = new Sequelize( //instanciamos a sequelize con new
+const sequelize = new Sequelize( //instanciamos a sequelize con new, acá estamos conectando al server con la db, en este caso con postgres con las coordenandas de las claves y todo eso. 
    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
    {
       logging: false, // set to console.log to see the raw SQL queries
@@ -16,7 +16,7 @@ const basename = path.basename(__filename);
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
-fs.readdirSync(path.join(__dirname, '/models'))
+fs.readdirSync(path.join(__dirname, '/models')) //comando sync sirve para conectar la db con el server 
    .filter(
       (file) =>
          file.indexOf('.') !== 0 &&

@@ -3,10 +3,10 @@
     background-size: cover;
     border-radius: 10px; /*borde más redondeado*/
     width: 2350px; 
-    height: 1250px;
+    height: 1110px;
     justify-content: center;
     align-items:center;
-    margin:auto;
+    /* margin:auto; */
     text-align:center;
 }
 
@@ -23,24 +23,26 @@
 
 .buttonLanding {
     font-family:'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 40px;
     padding: 10px 20px;
-    background-color:whitesmoke;
-    color: black;
-    border: black;
+    background-color:black;
+    color: orange;
+    border: none;
     border-radius: 15px;
+    position: relative;
+    top: 220px;
+    left: 380px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     justify-content:center;
     text-decoration: none;
-    
     transition: .5s, color .10s;
         -webkit-transition: .5s, color .10s;
         -moz-transition: .5s, color .10s;
+    outline: none;
 }
   
 .buttonLanding:focus {
-    outline: none;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5)
 }
     

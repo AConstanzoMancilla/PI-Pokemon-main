@@ -2,11 +2,10 @@
     display: flex;
     background-image:url( https://wallpapers.com/images/hd/pikachu-concept-fan-art-dl6iol5bdqg8d5c9.jpg);
     background-size: cover;
-    height: 1250px;
+    height: 1150px;
     padding:10px;
     border-radius: 10px;
-    justify-items: center;
-    align-items: center;
+
 }
 
 .form-container {
@@ -21,6 +20,7 @@
     left: 75%;
     margin-top: 100px;
     width: 500px;
+    border-radius: 10px;
 }
 
 .inputs{
@@ -28,55 +28,65 @@
     flex-direction: column;
     align-items: center;
     gap: 2em;
+    border-radius: 10px;
 }
 
 .id{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
   }
 
 .name{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
-.image{
+.image_form{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .hp{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .attack{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .defense{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .speed{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .height{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .weight{
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .errors{
-  color: rgb(210, 0, 0);
+  color: black;
   font-size: small;
   height: 0;
 }

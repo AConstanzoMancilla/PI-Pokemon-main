@@ -3,6 +3,7 @@ import { GET_BY_NAME, GET_POKEMONS, GET_BY_ID, GET_TYPES, FILTER_TYPE, FILTER_OR
 const initialState = {
     pokemons: [],
     pokemonsCopy: [], //hacemos una copia porque si filtramos el state se puede modificar completo y esa no es la idea
+    pokemonsCopyBySource : [],
     pokemon: {},
     types: [],
     source: "api"
@@ -18,7 +19,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 pokemons: pokemonsOriginHome,
-                pokemonsCopy: payload
+                pokemonsCopy: payload ,
+                pokemonsCopyBySource : pokemonsOriginHome
             }
         case GET_BY_NAME:
             return {
@@ -38,14 +40,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case FILTER_TYPE:
             const pokemonFiltered = 
             payload === "default" 
-            ? state.pokemonsCopy 
-            : state.pokemonsCopy.filter(poke => poke.types.includes(payload))
+            ? state.pokemonsCopyBySource 
+            : state.pokemonsCopyBySource.filter(poke => poke.types.includes(payload))
             return {
                 ...state,
                 pokemons: pokemonFiltered
             }
         case FILTER_ORDER:
-            const pokemonsOrdered = [...state.pokemonsCopy]
+            const pokemonsOrdered = [...state.pokemonsCopyBySource]
             if(payload === 'Ascendant'){
                 pokemonsOrdered.sort((a,b)=> {      //A = Orden alfabetico de manera ascendete
                     if (a.name < b.name) {
@@ -88,7 +90,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
             }
             return {
                 ...state,
-                pokemons: pokemonsOrigin
+                pokemons: pokemonsOrigin,
+                pokemonsCopyBySource : pokemonsOrigin
             }
         default:
             return {

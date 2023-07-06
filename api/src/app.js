@@ -1,12 +1,12 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const routes = require('./routes/index.js');
+const express = require('express'); //nos traemos a la librería express
+const cookieParser = require('cookie-parser'); //middleware
+const bodyParser = require('body-parser'); //middleware
+const morgan = require('morgan'); //middleware
+const routes = require('./routes/index.js'); 
 
 require('./db.js');
 
-const server = express();
+const server = express(); //estamos creando el server
 
 server.name = 'API';
 
@@ -22,7 +22,7 @@ server.use((req, res, next) => { //access control allow origin es una configurac
   next();
 });
 
-server.use('/', routes);
+server.use('/', routes); //acá estamos indicando que cuando se escriba una ruta vamos a utilizar a routes para tener todo modularizado
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
@@ -32,4 +32,4 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
-module.exports = server;
+module.exports = server; //exportamos al server para poder importarlo en el archivo index
