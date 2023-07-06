@@ -17,7 +17,6 @@ export const getPokemons = (offset) => {
             weight:pokemon.weight,
             height:pokemon.height,
             created:pokemon.created ? true : false
-           
         }
     })
     dispatch({ 
@@ -48,7 +47,6 @@ export const getPokemonByName = (name) => {
             } catch (error) {
                 alert(("This pokemon don't exist"))
             }
-        
 }}
 
 export const getPokemonById = (id,source) => {

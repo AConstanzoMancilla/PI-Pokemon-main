@@ -1,9 +1,12 @@
 import './filters.styles.css';
-import { getTypes, filterType, filterOrder, filterOrigin } from '../../redux/actions';
-import { useSelector, useDispatch } from 'react-redux';
+
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getTypes, filterType, filterOrder, filterOrigin } from '../../redux/actions';
 
 function Filters() {
+    
     const dispatch = useDispatch();
 
     const types = useSelector((state) => state.types)
@@ -13,12 +16,10 @@ function Filters() {
     }, []);
 
     const handlerTypes = (event) => {
-        
         dispatch(filterType(event.target.value))
     }
 
     const handlerOrder = (event) => {
-        
         dispatch(filterOrder(event.target.value))
     }
     
@@ -31,7 +32,6 @@ function Filters() {
         <select className="buttonFilters" onChange={handlerTypes}>
             <option value="default">Choose a pokemon type</option>
             {types.map((type, index) => (
-              
                 <option key={index} value={type.name}>{type.name}</option>
             ))}
         </select>

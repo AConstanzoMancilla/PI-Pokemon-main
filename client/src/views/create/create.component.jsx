@@ -1,25 +1,27 @@
 import './create.styles.css';
+
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getTypes } from '../../redux/actions';
 import NavBar from '../../components/navBar/navBar.component';
-import { useNavigate } from "react-router-dom";
 
 function Create() {
 
   const dispatch = useDispatch();
+  
   const navigate = useNavigate();
 
-  const types = useSelector((state) => state.types)
+  const types = useSelector((state) => state.types)//estamos atentos a la propiedad types del global state
 
   useEffect(() => {
     dispatch(getTypes())
-   
   }, []);
   
 
-  const [form, setForm] = useState({ 
+  const [form, setForm] = useState({ //estado local del form
     id: "",
     name: "", 
     image: "", 
@@ -33,7 +35,7 @@ function Create() {
     type2: ""
   })
 
-  const [errors, setErrors] = useState({ 
+  const [errors, setErrors] = useState({ //estado local de los errors
     id: "",
     name: "", 
     image: "", 
@@ -53,19 +55,14 @@ function Create() {
       ...form, 
       [event.target.name] : event.target.value
     })
-   
   }
 
   useEffect(() => {
-  
     validate()
-   
   }, [form]);
 
-
   const validate = () => {
-    console.log('mami sabe ',form,errors);
-    // //id
+    //id
     if(!/^[0-9]+$/.test(form.id) && form.id != ""){
       errors.id = "Id must be a number"
       setErrors(errors)
@@ -76,7 +73,6 @@ function Create() {
     }
     //name
     if(!/^[a-zA-Z]+$/.test(form.name) && form.name != ""){
-      console.log('mami sabe ',form.name,errors);
       errors.name =  "Name must be only letters"
       setErrors(errors)
     }
@@ -161,7 +157,6 @@ function Create() {
     }
 
     if(pokemonCreated) {
-     
         setForm({ 
           id: "",
           name: "", 
@@ -175,7 +170,7 @@ function Create() {
           type1: "",
           type2: ""
         })
-        var confirmation = window.confirm("Your new pokemon has been created return to home ?");
+        var confirmation = window.confirm("Your new pokemon has been created, do you want to see your new pokemon?");
 
         if (confirmation) {
           // Aquí puedes llamar a la función que deseas ejecutar
@@ -187,7 +182,6 @@ function Create() {
   return (
     <div className="containerForm">
       <NavBar/>
-      
       <form className="form-container" onSubmit={handlerSubmit}>
       <div className="inputs">
         <h1>Complete the form</h1>

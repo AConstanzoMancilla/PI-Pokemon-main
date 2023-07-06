@@ -1,12 +1,15 @@
 import './detail.styles.css';
-import { useEffect , useState } from 'react';
+
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemonById } from '../../redux/actions'
 import { useParams } from 'react-router-dom';
+
+import { getPokemonById } from '../../redux/actions'
 import NavBar from '../../components/navBar/navBar.component';
 
 
 function Detail() {
+
   const { id , source} = useParams();
   
   const dispatch = useDispatch();
@@ -25,22 +28,15 @@ function Detail() {
     types =stringType(pokemon.pokemonTypes) //junta dos types     
   }
   useEffect(() => { //ciclo de vida del componente, en este caso se renderiza cuando se monta. 
-  
   }, [pokemon]);
  
-  
-
-
-  
 const stringType = ( pokemonTypes) => {
   if(pokemonTypes.length > 1 ){
       return pokemonTypes[0].name +" & "+  pokemonTypes[1].name
   }else{
       return pokemonTypes[0].name
   }
-
 }
-
   return (
     <div className="containerDetails">
       <NavBar/>
@@ -59,9 +55,6 @@ const stringType = ( pokemonTypes) => {
     <div className="image-container">
       <img src={pokemon.image}/>
     </div>
-  
-  
-    
     </div>
   );
 }

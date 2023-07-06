@@ -1,11 +1,12 @@
 import './searchBar.styles.css';
+
 import { useState } from 'react';
-import { getPokemons, getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
-
+import { getPokemons, getPokemonByName } from '../../redux/actions';
 
 function SearchBar() {
+
   const dispatch = useDispatch();
   
   const [searchPokemon, setSearchPokemon] = useState('');
@@ -33,7 +34,6 @@ function SearchBar() {
         <input className="buttonInput" placeholder="Find a pokemon" value={searchPokemon} onChange={handleChange} />
         <button className="buttonSearch" type="submit">Search</button>
       </form>
-      
     </div>
   );
   }

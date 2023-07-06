@@ -12,9 +12,6 @@ pokemonsRoutes.get("/", getAllPokemonsHandler);
 // GET | /pokemons/:idPokemon
 pokemonsRoutes.get("/:id/:source", getPokemonIdHandler);
 
-// GET | /pokemons/name?="..."
-//pokemonsRoutes.get("/", getAllPokemonByNameHandler);
-
 // POST | /pokemons
 pokemonsRoutes.post("/", createPokemonHandler);
 

@@ -1,5 +1,6 @@
-import Card from '../card/card.component';
 import './cards.styles.css';
+
+import Card from '../card/card.component';
 
 function Cards({allPokemons}) {
   
